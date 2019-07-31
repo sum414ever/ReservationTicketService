@@ -257,30 +257,35 @@ public class Transaction {
       payment();
     } else if (sum.compareTo(cost) == 0) {
       System.out.println(" Ok, well done, you bought the ticket");
-      for (int i = 0; i < tickets.length - 1; i++) {
+      for (int i = 0; i < tickets.length; i++) {
         numbThicket = Integer.parseInt(tickets[i]);
         bookings = RegisteredClient.registeredClient.getBookings();
-        thisBooking = new Booking(unpaidTicket.get(numbThicket).getBookedDate(),
-            true,
-            unpaidTicket.get(numbThicket).getBookedMovie(),
-            unpaidTicket.get(numbThicket).getRow(),
-            unpaidTicket.get(numbThicket).getPlace(), unpaidTicket.get(numbThicket).getPrice());
-        bookings.add(thisBooking);
-        RegisteredClient.registeredClient.setBookings(bookings);
+        for (Booking b : bookings) {
+          if (b.getBookedMovie().getName() == unpaidTicket.get(numbThicket).getBookedMovie()
+              .getName() && b.getBookedDate() == unpaidTicket.get(numbThicket).getBookedDate()
+              && b.getRow() == unpaidTicket.get(numbThicket).getRow()
+              && b.getPlace() == unpaidTicket
+              .get(numbThicket).getPlace()) {
+            unpaidTicket.get(numbThicket).setPaymentStatus(true);
+          }
+        }
+        input = sc.nextLine();
       }
     } else {
       System.out.println("Ok, well done, you bought the ticket, and here is your change " + sum
           .subtract(cost.setScale(2, BigDecimal.ROUND_HALF_UP)));
-      for (int i = 0; i < tickets.length - 1; i++) {
-        numbThicket = Integer.parseInt(tickets[i]);
+      for (int i = 0; i < tickets.length; i++) {
+        numbThicket = Integer.parseInt(tickets[i]) - 1;
         bookings = RegisteredClient.registeredClient.getBookings();
-        thisBooking = new Booking(unpaidTicket.get(numbThicket).getBookedDate(),
-            true,
-            unpaidTicket.get(numbThicket).getBookedMovie(),
-            unpaidTicket.get(numbThicket).getRow(),
-            unpaidTicket.get(numbThicket).getPlace(), unpaidTicket.get(numbThicket).getPrice());
-        bookings.add(thisBooking);
-        RegisteredClient.registeredClient.setBookings(bookings);
+        for (Booking b : bookings) {
+          if (b.getBookedMovie().getName() == unpaidTicket.get(numbThicket).getBookedMovie()
+              .getName() && b.getBookedDate() == unpaidTicket.get(numbThicket).getBookedDate()
+              && b.getRow() == unpaidTicket.get(numbThicket).getRow()
+              && b.getPlace() == unpaidTicket
+              .get(numbThicket).getPlace()) {
+            unpaidTicket.get(numbThicket).setPaymentStatus(true);
+          }
+        }
         input = sc.nextLine();
       }
       AppRunner.run();
