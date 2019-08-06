@@ -3,7 +3,7 @@ package runner;
 import movie.Movie;
 import movie.MovieCreator;
 
-public class AllMovies {
+public class Poster {
 
   public static void showAllMovies() {
     for (Movie movie : MovieCreator.movies) {

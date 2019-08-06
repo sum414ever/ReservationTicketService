@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import movie.Movie;
 import movie.MovieCreator;
 
-public class MovieInformationByName {
+public class MovieInfo {
 
   public static void getInformation() {
 

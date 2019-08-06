@@ -7,7 +7,7 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 import movie.Movie;
 
-public class CinemaInformationByName {
+public class ListOfCinemas {
 
   public static void getInformation() {
 

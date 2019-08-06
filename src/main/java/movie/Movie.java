@@ -1,6 +1,7 @@
 package movie;
 
 import hall.Hall;
+
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -9,148 +10,152 @@ import java.util.List;
 
 public class Movie {
 
-  private BigDecimal bigDecimal;
-  private String name;
-  private int numberOfRoom;
-  private TypeOfMovie typeOfMovie;
-  private StatusOfMovie statusOfMovie;
-  private LocalDate durationFrom;
-  private LocalDate durationTo;
-  private BigDecimal priceNormal  ;
-  private BigDecimal pricePremium;
-  private BigDecimal priceVip;
-  private Category category;
-  private List<Hall> halls = new ArrayList<>();
+    private BigDecimal bigDecimal;
+    private String name;
+    private int numberOfRoom;
+    private TypeOfMovie typeOfMovie;
+    private StatusOfMovie statusOfMovie;
+    private LocalDate durationFrom;
+    private LocalDate durationTo;
+    private BigDecimal priceNormal;
+    private BigDecimal pricePremium;
+    private BigDecimal priceVip;
+    private Category category;
+    private List<Hall> halls = new ArrayList<>();
 
-  public Movie(String name, int numberOfRoom, TypeOfMovie typeOfMovie,
-      StatusOfMovie statusOfMovie, String durationFrom, String durationTo, double priceNormal,
-      double pricePremium, double priceVip, Category category) {
+    public Movie(String name, int numberOfRoom, TypeOfMovie typeOfMovie,
+                 StatusOfMovie statusOfMovie, String durationFrom, String durationTo, double priceNormal,
+                 double pricePremium, double priceVip, Category category) {
 
-    this.name = name;
-    this.numberOfRoom = numberOfRoom;
-    this.typeOfMovie = typeOfMovie;
-    this.statusOfMovie = statusOfMovie;
-    this.durationFrom = LocalDate.parse(durationFrom);
-    this.durationTo = LocalDate.parse(durationTo);
-    this.priceNormal = new BigDecimal(priceNormal);
-    this.pricePremium = new BigDecimal(pricePremium);
-    this.priceVip = new BigDecimal(priceVip);
-    this.category = category;
-    //adds to each film a list of places for every day
-    for (int i = 0; i < Duration.between(this.durationFrom.atStartOfDay(), this.durationTo.atStartOfDay()).toDays(); i++) {
-      halls.add(new Hall(numberOfRoom, this.durationFrom.plusDays(i)));
+        this.name = name;
+        this.numberOfRoom = numberOfRoom;
+        this.typeOfMovie = typeOfMovie;
+        this.statusOfMovie = statusOfMovie;
+        this.durationFrom = LocalDate.parse(durationFrom);
+        this.durationTo = LocalDate.parse(durationTo);
+        this.priceNormal = new BigDecimal(priceNormal);
+        this.pricePremium = new BigDecimal(pricePremium);
+        this.priceVip = new BigDecimal(priceVip);
+        this.category = category;
+        generatePlace();
     }
-  }
 
-  public String getName() {
-    return name;
-  }
+    //adds to each film a list of places for every day
+    private void generatePlace() {
+        for (int i = 0; i < Duration.between(this.durationFrom.atStartOfDay(), this.durationTo.atStartOfDay()).toDays(); i++) {
+            halls.add(new Hall(numberOfRoom, this.durationFrom.plusDays(i)));
+        }
+    }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public int getNumberOfRoom() {
-    return numberOfRoom;
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  public void setNumberOfRoom(int numberOfRoom) {
-    this.numberOfRoom = numberOfRoom;
-  }
+    public int getNumberOfRoom() {
+        return numberOfRoom;
+    }
 
-  public TypeOfMovie getTypeOfMovie() {
-    return typeOfMovie;
-  }
+    public void setNumberOfRoom(int numberOfRoom) {
+        this.numberOfRoom = numberOfRoom;
+    }
 
-  public void setTypeOfMovie(TypeOfMovie typeOfMovie) {
-    this.typeOfMovie = typeOfMovie;
-  }
+    public TypeOfMovie getTypeOfMovie() {
+        return typeOfMovie;
+    }
 
-  public StatusOfMovie getStatusOfMovie() {
-    return statusOfMovie;
-  }
+    public void setTypeOfMovie(TypeOfMovie typeOfMovie) {
+        this.typeOfMovie = typeOfMovie;
+    }
 
-  public void setStatusOfMovie(StatusOfMovie statusOfMovie) {
-    this.statusOfMovie = statusOfMovie;
-  }
+    public StatusOfMovie getStatusOfMovie() {
+        return statusOfMovie;
+    }
 
-  public LocalDate getDurationFrom() {
-    return durationFrom;
-  }
+    public void setStatusOfMovie(StatusOfMovie statusOfMovie) {
+        this.statusOfMovie = statusOfMovie;
+    }
 
-  public void setDurationFrom(LocalDate durationFrom) {
-    this.durationFrom = durationFrom;
-  }
+    public LocalDate getDurationFrom() {
+        return durationFrom;
+    }
 
-  public LocalDate getDurationTo() {
-    return durationTo;
-  }
+    public void setDurationFrom(LocalDate durationFrom) {
+        this.durationFrom = durationFrom;
+    }
 
-  public void setDurationTo(LocalDate durationTo) {
-    this.durationTo = durationTo;
-  }
+    public LocalDate getDurationTo() {
+        return durationTo;
+    }
 
-  public BigDecimal getPriceNormal() {
-    return priceNormal;
-  }
+    public void setDurationTo(LocalDate durationTo) {
+        this.durationTo = durationTo;
+    }
 
-  public void setPriceNormal(BigDecimal priceNormal) {
-    this.priceNormal = priceNormal;
-  }
+    public BigDecimal getPriceNormal() {
+        return priceNormal;
+    }
 
-  public BigDecimal getPricePremium() {
-    return pricePremium;
-  }
+    public void setPriceNormal(BigDecimal priceNormal) {
+        this.priceNormal = priceNormal;
+    }
 
-  public void setPricePremium(BigDecimal pricePremium) {
-    this.pricePremium = pricePremium;
-  }
+    public BigDecimal getPricePremium() {
+        return pricePremium;
+    }
 
-  public BigDecimal getPriceVip() {
-    return priceVip;
-  }
+    public void setPricePremium(BigDecimal pricePremium) {
+        this.pricePremium = pricePremium;
+    }
 
-  public void setPriceVip(BigDecimal priceVip) {
-    this.priceVip = priceVip;
-  }
+    public BigDecimal getPriceVip() {
+        return priceVip;
+    }
 
-  public Category getCategory() {
-    return category;
-  }
+    public void setPriceVip(BigDecimal priceVip) {
+        this.priceVip = priceVip;
+    }
 
-  public void setCategory(Category category) {
-    this.category = category;
-  }
+    public Category getCategory() {
+        return category;
+    }
 
-  public BigDecimal getBigDecimal() {
-    return bigDecimal;
-  }
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
-  public void setBigDecimal(BigDecimal bigDecimal) {
-    this.bigDecimal = bigDecimal;
-  }
+    public BigDecimal getBigDecimal() {
+        return bigDecimal;
+    }
 
-  public List<Hall> getHalls() {
-    return halls;
-  }
+    public void setBigDecimal(BigDecimal bigDecimal) {
+        this.bigDecimal = bigDecimal;
+    }
 
-  public void setHalls(List<Hall> halls) {
-    this.halls = halls;
-  }
+    public List<Hall> getHalls() {
+        return halls;
+    }
 
-  @Override
-  public String toString() {
-    return "movie.Movie{" +
-        "name='" + name + '\'' +
-        ", numberOfRoom=" + numberOfRoom +
-        ", typeOfMovie=" + typeOfMovie +
-        ", statusOfMovie=" + statusOfMovie +
-        ", durationFrom=" + durationFrom +
-        ", durationTo=" + durationTo +
-        ", priceNormal=" + priceNormal +
-        ", pricePremium=" + pricePremium +
-        ", priceVip=" + priceVip +
-        ", category=" + category +
-        '}';
-  }
+    public void setHalls(List<Hall> halls) {
+        this.halls = halls;
+    }
+
+    @Override
+    public String toString() {
+        return "movie.Movie{" +
+                "name='" + name + '\'' +
+                ", numberOfRoom=" + numberOfRoom +
+                ", typeOfMovie=" + typeOfMovie +
+                ", statusOfMovie=" + statusOfMovie +
+                ", durationFrom=" + durationFrom +
+                ", durationTo=" + durationTo +
+                ", priceNormal=" + priceNormal +
+                ", pricePremium=" + pricePremium +
+                ", priceVip=" + priceVip +
+                ", category=" + category +
+                '}';
+    }
 }

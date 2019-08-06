@@ -32,6 +32,6 @@ public class AllInformationGenerator {
     } else {
       System.out.println("Client not found");
     }
-    AppRunner.run();
+    AppRunner.startApp();
   }
 }

@@ -4,7 +4,7 @@ import cinema.Cinema;
 
 import cinema.CinemaCreator;
 
-public class AllCinemas {
+public class AllCinemasList {
 
   public static void showAllCinemas() {
     for (Cinema cinema : CinemaCreator.cinemas) {
